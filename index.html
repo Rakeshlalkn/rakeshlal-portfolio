@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakesh Lal | Backend Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0a0a0a;
+    --green: #00ff41;
+    --prompt-color: #ffffff;
+    --output-color: #a0ffbc;
+    --font: 'Fira Code', monospace;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: var(--font);
+    overflow: hidden;
+}
+
+#terminal {
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--output-color);
+    overflow-y: auto;
+    font-size: 16px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+}
+
+.line {
+    white-space: pre-wrap;
+    margin-bottom: 6px;
+}
+
+.input-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+.input {
+    display: inline;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.65ch;
+    background: var(--green);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.glitch {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            rgba(18,16,16,0) 50%,
+            rgba(0,0,0,0.25) 50%
+        );
+    background-size: 100% 2px;
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 600px) {
+    #terminal {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .cursor {
+        width: 0.5ch;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="glitch"></div>
+
+<div id="terminal">
+    <div id="history"></div>
+    <div class="line input-line">
+        <span class="prompt" id="prompt"></span>
+        <span class="input" id="input"></span>
+    </div>
+</div>
+
+<a id="resumeLink" href="RakeshLalKN.pdf" download hidden></a>
+
+<script>
+const historyEl = document.getElementById("history");
+const inputEl = document.getElementById("input");
+const promptEl = document.getElementById("prompt");
+const terminal = document.getElementById("terminal");
+
+const PROMPT_TEXT = "rakesh@backend:~$";
+promptEl.textContent = PROMPT_TEXT;
+
+// Cursor inside input
+const cursorEl = document.createElement("span");
+cursorEl.className = "cursor";
+cursorEl.textContent = " ";
+inputEl.appendChild(cursorEl);
+
+const commandHistory = [];
+let historyIndex = 0;
+
+// System commands
+const system = {
+    boot: [
+        "Booting Backend Engineer System...",
+        "----------------------------------",
+        "RAKESH LAL K N",
+        "Senior Software Engineer | Backend Systems",
+        "Location : Kochi, Kerala, India",
+        "Status   : ONLINE",
+        "----------------------------------",
+        "Type `help` to get started."
+    ],
+    help: [
+        "help        - list commands",
+        "about       - about me",
+        "skills      - technical skills",
+        "experience  - work experience",
+        "projects    - professional projects",
+        "contact     - contact info",
+        "resume      - download resume",
+        "clear       - clear terminal"
+    ],
+    about: [
+        "Senior backend engineer with 4+ years of experience.",
+        "Focused on enterprise systems and REST APIs.",
+        "Strong in Django, FastAPI, MySQL.",
+        "Agile & Scrum team experience."
+    ],
+    skills: [
+        "Languages     : Python, Go",
+        "Frameworks    : Django, FastAPI",
+        "Databases     : MySQL, PostgreSQL",
+        "Web Tech      : HTML, CSS, JavaScript",
+        "Tools         : Git, Docker",
+        "Methodology   : Agile, Scrum"
+    ],
+    experience: [
+        "Beinex Consulting Ltd (2023 - Present)",
+        "  Role    : Senior Software Engineer",
+        "  Project : Enterprise GRC Platform",
+        "  - RESTful APIs & backend architecture",
+        "  - Performance optimization & mentoring",
+        "",
+        "Epixel Solutions Pvt. Ltd (2021 - 2023)",
+        "  Role : Junior Software Engineer",
+        "  - MLM Web Applications",
+        "  - Django, Go, Node.js",
+        "  - End-to-end development lifecycle"
+    ],
+    projects: [
+        "Enterprise GRC Platform (Beinex Consulting)",
+        "  - Django, FastAPI, MySQL",
+        "MLM Web Applications (Epixel Solutions)",
+        "  - Django, Go, Node.js"
+    ],
+    contact: [
+        "Email    : rakeshlal724@gmail.com",
+        "Phone    : +91 9072472470",
+        "GitHub   : https://github.com/Rakeshlalkn ",
+        "LinkedIn : https://www.linkedin.com/in/rakesh-lal-0541401a7 "
+    ]
+};
+
+// Boot animation
+async function bootSequence() {
+    for (let line of system.boot) {
+        await typeLine(line);
+    }
+}
+
+// Type line animation
+function typeLine(text, delay = 20) {
+    return new Promise(resolve => {
+        const div = document.createElement("div");
+        div.className = "line";
+        historyEl.appendChild(div);
+        let i = 0;
+        const interval = setInterval(() => {
+            div.textContent = text.slice(0, i + 1);
+            terminal.scrollTop = terminal.scrollHeight;
+            i++;
+            if (i > text.length) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, delay);
+    });
+}
+
+// Enable input after boot
+function enableUserInput() {
+    document.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            const cmd = inputEl.textContent.replace(cursorEl.textContent, "").trim();
+            inputEl.textContent = "";
+            inputEl.appendChild(cursorEl);
+            execute(cmd);
+        } 
+        else if (e.key === "Backspace") {
+            const currentText = inputEl.textContent.replace(cursorEl.textContent, "");
+            inputEl.textContent = currentText.slice(0, -1);
+            inputEl.appendChild(cursorEl);
+        } 
+        else if (e.key === "ArrowUp") {
+            historyIndex = Math.max(0, historyIndex - 1);
+            inputEl.textContent = (commandHistory[historyIndex] || "") + " ";
+            inputEl.appendChild(cursorEl);
+        } 
+        else if (e.key === "ArrowDown") {
+            historyIndex = Math.min(commandHistory.length, historyIndex + 1);
+            inputEl.textContent = (commandHistory[historyIndex] || "") + " ";
+            inputEl.appendChild(cursorEl);
+        } 
+        else if (e.key.length === 1) {
+            const currentText = inputEl.textContent.replace(cursorEl.textContent, "");
+            inputEl.textContent = currentText + e.key;
+            inputEl.appendChild(cursorEl);
+        }
+    });
+}
+
+// Print command line
+function printCommand(cmd) {
+    const div = document.createElement("div");
+    div.className = "line";
+    div.innerHTML = `<span class="prompt">${PROMPT_TEXT}</span> ${cmd}`;
+    historyEl.appendChild(div);
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+// Execute command
+function execute(cmd) {
+    printCommand(cmd);
+    if (!cmd) return;
+    commandHistory.push(cmd);
+    historyIndex = commandHistory.length;
+
+    if (cmd === "skills" || cmd === "projects") {
+        system[cmd].forEach(line => typeLine(line));
+    } else if (cmd === "clear") {
+        historyEl.innerHTML = "";
+    } else if (cmd === "resume") {
+        document.getElementById("resumeLink").click();
+        typeLine("Downloading resume...");
+    } else if (cmd === "help") {
+        system.help.forEach(line => typeLine(line));
+    } else if (cmd === "about") {
+        system.about.forEach(line => typeLine(line));
+    } else if (cmd === "experience") {
+        system.experience.forEach(line => typeLine(line));
+    } else if (cmd === "contact") {
+        system.contact.forEach(line => typeLine(line));
+    } else {
+        typeLine(`command not found: ${cmd}`);
+    }
+}
+
+// Start boot sequence
+bootSequence().then(enableUserInput);
+</script>
+</body>
+</html>
