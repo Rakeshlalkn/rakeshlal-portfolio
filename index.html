@@ -420,6 +420,104 @@
         }
 
         /* ============================================================
+           PORTFOLIO CHATBOT
+           ============================================================ */
+        #chatbotToggle {
+            position: fixed;
+            right: 24px;
+            bottom: 92px;
+            z-index: 60;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.15));
+            border: 1px solid rgba(0,243,255,0.35);
+            color: #fff;
+            padding: 12px 14px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(12px);
+        }
+
+        #chatbotPanel {
+            position: fixed;
+            right: 24px;
+            bottom: 150px;
+            width: min(380px, calc(100vw - 24px));
+            max-height: 70vh;
+            display: none;
+            flex-direction: column;
+            background: rgba(7, 10, 18, 0.95);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+            z-index: 60;
+        }
+
+        #chatbotPanel.open { display: flex; }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 14px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .chat-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            font-size: 13px;
+            color: #e5eef7;
+        }
+
+        .chat-bubble {
+            max-width: 88%;
+            padding: 10px 12px;
+            border-radius: 14px;
+            line-height: 1.45;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .chat-bubble.user {
+            margin-left: auto;
+            background: rgba(0,243,255,0.12);
+            border-color: rgba(0,243,255,0.25);
+        }
+
+        .chat-bubble.bot {
+            margin-right: auto;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .chat-input-row input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #fff;
+            border-radius: 999px;
+            padding: 10px 12px;
+            font-size: 13px;
+        }
+
+        .chat-input-row button {
+            border-radius: 999px;
+            padding: 10px 12px;
+            background: linear-gradient(135deg, #00f3ff, #bc13fe);
+            color: #041017;
+            border: none;
+            font-weight: 700;
+        }
+
+        /* ============================================================
            LIVE STATUS TICKER
            ============================================================ */
         .live-dot {
@@ -745,15 +843,15 @@
                             how we ship.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/go.svg" alt="Go"></span>Go</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/django.svg" alt="Django"></span>Django</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/fastapi.svg" alt="FastAPI"></span>FastAPI</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" alt="AWS"></span>AWS</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/go/00ADD8" alt="Go"></span>Go</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"></span>Django</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"></span>FastAPI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS"></span>AWS</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-infinity"></i></span>CI/CD</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/celery.svg" alt="Celery"></span>Celery</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/rabbitmq.svg" alt="RabbitMQ"></span>RabbitMQ</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/celery/37814A" alt="Celery"></span>Celery</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></span>RabbitMQ</span>
                         </div>
                     </article>
 
@@ -772,13 +870,13 @@
                             design, build, ship, fix at 3am. Left as a mid-level engineer disguised as a junior.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/django.svg" alt="Django"></span>Django</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/go.svg" alt="Go"></span>Go</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/postgresql.svg" alt="PostgreSQL"></span>PostgreSQL</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/redis.svg" alt="Redis"></span>Redis</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/celery.svg" alt="Celery"></span>Celery</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"></span>Django</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/go/00ADD8" alt="Go"></span>Go</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/postgresql/336791" alt="PostgreSQL"></span>PostgreSQL</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis"></span>Redis</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/celery/37814A" alt="Celery"></span>Celery</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></span>Docker</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-brands fa-git-alt text-[#F05032]"></i></span>Git</span>
                         </div>
                     </article>
@@ -805,14 +903,14 @@
                     <article class="glass skill-card p-6 reveal">
                         <h3 class="text-xs font-mono text-neon-blue uppercase tracking-widest mb-4">Core Backend</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/django.svg" alt="Django"></span>Django</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/fastapi.svg" alt="FastAPI"></span>FastAPI</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/go.svg" alt="Go"></span>Go</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/javascript.svg" alt="JavaScript"></span>JavaScript</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/html5.svg" alt="HTML5"></span>HTML</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/css3.svg" alt="CSS3"></span>CSS</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/bootstrap.svg" alt="Bootstrap"></span>Bootstrap</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"></span>Django</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"></span>FastAPI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/go/00ADD8" alt="Go"></span>Go</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript"></span>JavaScript</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5"></span>HTML</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/css3/1572B6" alt="CSS3"></span>CSS</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/bootstrap/7952B3" alt="Bootstrap"></span>Bootstrap</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-brands fa-git-alt text-[#F05032]"></i></span>Git</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-database text-neon-blue"></i></span>SQL</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-layer-group text-neon-amber"></i></span>Microservices</span>
@@ -823,13 +921,13 @@
                     <article class="glass skill-card p-6 reveal" data-delay="1">
                         <h3 class="text-xs font-mono text-neon-emerald uppercase tracking-widest mb-4">Data, Queue & Cloud</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/postgresql.svg" alt="PostgreSQL"></span>PostgreSQL</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/mysql.svg" alt="MySQL"></span>MySQL</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/redis.svg" alt="Redis"></span>Redis</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/rabbitmq.svg" alt="RabbitMQ"></span>RabbitMQ</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/celery.svg" alt="Celery"></span>Celery</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" alt="AWS"></span>AWS</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/postgresql/336791" alt="PostgreSQL"></span>PostgreSQL</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"></span>MySQL</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis"></span>Redis</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></span>RabbitMQ</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/celery/37814A" alt="Celery"></span>Celery</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS"></span>AWS</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-server text-neon-purple"></i></span>EC2</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-database text-neon-blue"></i></span>RDS</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-box text-neon-emerald"></i></span>S3</span>
@@ -842,7 +940,7 @@
                         <div class="flex flex-wrap gap-2">
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-robot text-neon-blue"></i></span>RAG</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-robot text-[#00f3ff]"></i></span>LangChain</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/openai.svg" alt="OpenAI"></span>OpenAI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"></span>OpenAI</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-sparkles text-neon-purple"></i></span>Gemini</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-network-wired text-neon-emerald"></i></span>LLM Integrations</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-comments text-neon-amber"></i></span>Prompt Engineering</span>
@@ -854,8 +952,8 @@
                     <article class="glass skill-card p-6 reveal" data-delay="3">
                         <h3 class="text-xs font-mono text-white uppercase tracking-widest mb-4">Data Science & Analytics</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/pandas.svg" alt="Pandas"></span>Pandas</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/numpy.svg" alt="NumPy"></span>NumPy</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"></span>Pandas</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"></span>NumPy</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-chart-line text-neon-emerald"></i></span>Data Pipelines</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-terminal text-neon-blue"></i></span>Linux</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-book text-neon-purple"></i></span>API Design</span>
@@ -894,12 +992,12 @@
                             internal knowledge base documents.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/fastapi.svg" alt="FastAPI"></span>FastAPI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"></span>FastAPI</span>
                             <span class="chip"><span class="skill-icon"><i class="fa-solid fa-robot text-[#00f3ff]"></i></span>LangChain</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/openai.svg" alt="OpenAI"></span>OpenAI / Gemini</span>
-                            <span class="chip"><span class="skill-icon"><i class="fa-solid fa-database"></i></span>ChromaDB</span>
-                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"></span>OpenAI / Gemini</span>
+                            <span class="chip"><span class="skill-icon"><i class="fa-solid fa-database text-neon-emerald"></i></span>ChromaDB</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></span>Docker</span>
                         </div>
                     </div>
 
@@ -1015,11 +1113,18 @@
                         Looking for senior backend roles where I can ship reliable systems with
                         a team that cares about craft.
                     </p>
-                    <a href="mailto:rakeshlal724@gmail.com"
-                       class="text-xl md:text-3xl font-mono hover:text-neon-blue transition-colors underline decoration-neon-blue/30 underline-offset-8"
-                       data-cursor="link">
-                        rakeshlal724@gmail.com
-                    </a>
+                    <div class="flex flex-col items-center gap-3">
+                        <a href="mailto:rakeshlal724@gmail.com"
+                           class="text-xl md:text-3xl font-mono hover:text-neon-blue transition-colors underline decoration-neon-blue/30 underline-offset-8"
+                           data-cursor="link">
+                            rakeshlal724@gmail.com
+                        </a>
+                        <a href="tel:+919072472470"
+                           class="text-lg md:text-2xl font-mono hover:text-neon-blue transition-colors underline decoration-neon-blue/30 underline-offset-8"
+                           data-cursor="link">
+                            +91 9072472470
+                        </a>
+                    </div>
                     <div class="flex flex-wrap justify-center gap-4 mt-10">
                         <a href="https://linkedin.com/in/rakesh-lal-0541401a7" target="_blank" rel="noopener"
                            class="glass px-5 py-3 flex items-center gap-3" data-magnetic data-cursor="link">
@@ -1057,6 +1162,30 @@
     <button id="toTop" data-cursor="link" aria-label="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
+
+    <button id="chatbotToggle" type="button" aria-label="Open portfolio assistant" data-cursor="link">
+        <i class="fa-solid fa-robot"></i>
+    </button>
+
+    <aside id="chatbotPanel" aria-label="Portfolio assistant panel">
+        <div class="chat-header">
+            <div>
+                <div class="text-[10px] font-mono uppercase tracking-[0.35em] text-neon-blue">Portfolio AI</div>
+                <div class="text-sm font-semibold">Ask me about this site</div>
+            </div>
+            <button id="chatbotClose" type="button" class="text-gray-400" aria-label="Close assistant">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-bubble bot">Hi! I can answer quick questions about experience, stack, projects, and contact details from this portfolio.</div>
+            <div class="chat-bubble bot">Try: “What skills do you have?”, “Tell me about your chatbot project?”, or “How can I contact you?”</div>
+        </div>
+        <div class="chat-input-row">
+            <input id="chatInput" type="text" placeholder="Ask about skills, work, project..." />
+            <button id="chatSend" type="button">Send</button>
+        </div>
+    </aside>
 
     <script>
     /* ============================================================
@@ -1433,7 +1562,80 @@
     });
 
     /* ============================================================
-       12. PARALLAX ON HERO TEXT (subtle, mouse-reactive)
+       12. PORTFOLIO CHATBOT (simple local FAQ assistant)
+       ============================================================ */
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotPanel = document.getElementById('chatbotPanel');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+
+    const chatbotKnowledge = [
+      {
+        keys: ['experience', 'work', 'job', 'company', 'beinex', 'epixel'],
+        answer: 'I have 4+ years of backend engineering experience, including Senior Software Engineer at Beinex and earlier work at Epixel Solutions. My focus is on Python, Django, FastAPI, Go, APIs, data pipelines, and production reliability.'
+      },
+      {
+        keys: ['skill', 'stack', 'technology', 'tool', 'python', 'django', 'fastapi', 'go', 'sql', 'postgres', 'redis', 'docker', 'aws'],
+        answer: 'My main stack includes Python, Django, FastAPI, Go, SQL/PostgreSQL/MySQL, Redis, RabbitMQ, Celery, Docker, AWS, Git, CI/CD, and AI/LLM tools such as LangChain, OpenAI/Gemini, RAG, and vector search.'
+      },
+      {
+        keys: ['project', 'chatbot', 'rag', 'ai', 'llm'],
+        answer: 'The featured project is an AI-powered customer support chatbot using RAG. It uses Python, FastAPI, LangChain, OpenAI/Gemini, and ChromaDB to answer knowledge-base questions with contextual retrieval and source-aware responses.'
+      },
+      {
+        keys: ['contact', 'email', 'linkedin', 'github', 'resume'],
+        answer: 'You can reach me at rakeshlal724@gmail.com, view my LinkedIn at linkedin.com/in/rakesh-lal-0541401a7, GitHub at github.com/Rakeshlalkn, or download my resume from the site.'
+      },
+      {
+        keys: ['about', 'who', 'where', 'kerala'],
+        answer: 'I am a backend engineer from Kerala, currently focused on reliable APIs, clean system design, and shipping production-grade software with Python and Go.'
+      }
+    ];
+
+    function appendMessage(text, who) {
+      const div = document.createElement('div');
+      div.className = `chat-bubble ${who}`;
+      div.textContent = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function answerQuestion(raw) {
+      const q = raw.toLowerCase();
+      for (const item of chatbotKnowledge) {
+        if (item.keys.some(k => q.includes(k))) {
+          return item.answer;
+        }
+      }
+      return 'I can help with your experience, skills, project, or contact details. Try asking about your stack, chatbot project, or how to reach you.';
+    }
+
+    chatbotToggle?.addEventListener('click', () => {
+      chatbotPanel.classList.toggle('open');
+    });
+
+    chatbotClose?.addEventListener('click', () => {
+      chatbotPanel.classList.remove('open');
+    });
+
+    function sendChat() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMessage(text, 'user');
+      chatInput.value = '';
+      const reply = answerQuestion(text);
+      setTimeout(() => appendMessage(reply, 'bot'), 220);
+    }
+
+    chatSend?.addEventListener('click', sendChat);
+    chatInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendChat();
+    });
+
+    /* ============================================================
+       13. PARALLAX ON HERO TEXT (subtle, mouse-reactive)
        ============================================================ */
     const heroH1 = document.querySelector('#hero h1');
     if (heroH1) {
