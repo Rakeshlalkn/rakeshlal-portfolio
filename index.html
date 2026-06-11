@@ -229,6 +229,11 @@
             object-fit: contain;
         }
 
+        .skill-icon img {
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
         .skill-card {
             border-radius: 1.25rem;
         }
@@ -544,7 +549,7 @@
                     <span>Open to <span class="text-neon-emerald">Senior Backend</span> roles</span>
                 </div>
 
-                <h1 class="text-5xl md:text-[110px] font-bold leading-[0.95] tracking-[-0.04em] mb-10">
+                <h1 class="text-4xl md:text-[78px] font-bold leading-[1] tracking-[-0.04em] mb-10">
                     <span class="block">
                         <span class="letter-mask" style="animation-delay:.1s"><span>Senior</span></span>
                         <span class="letter-mask" style="animation-delay:.15s"><span>Software</span></span>
@@ -741,15 +746,15 @@
                             how we ship.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><i class="fa-brands fa-python text-[#3776AB]"></i>Python</span>
-                            <span class="chip"><i class="fa-brands fa-golang text-[#00ADD8]"></i>Go</span>
-                            <span class="chip"><i class="fa-solid fa-leaf text-[#43B02A]"></i>Django</span>
-                            <span class="chip"><i class="fa-solid fa-bolt text-[#009688]"></i>FastAPI</span>
-                            <span class="chip"><i class="fa-brands fa-docker text-[#2496ED]"></i>Docker</span>
-                            <span class="chip"><i class="fa-brands fa-aws text-[#FF9900]"></i>AWS</span>
-                            <span class="chip"><i class="fa-solid fa-infinity"></i>CI/CD</span>
-                            <span class="chip"><i class="fa-solid fa-clock text-[#37814A]"></i>Celery</span>
-                            <span class="chip"><i class="fa-solid fa-comments text-[#FF6600]"></i>RabbitMQ</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/go.svg" alt="Go"></span>Go</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/django.svg" alt="Django"></span>Django</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/fastapi.svg" alt="FastAPI"></span>FastAPI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" alt="AWS"></span>AWS</span>
+                            <span class="chip"><span class="skill-icon"><i class="fa-solid fa-infinity"></i></span>CI/CD</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/celery.svg" alt="Celery"></span>Celery</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/rabbitmq.svg" alt="RabbitMQ"></span>RabbitMQ</span>
                         </div>
                     </article>
 
@@ -768,14 +773,14 @@
                             design, build, ship, fix at 3am. Left as a mid-level engineer disguised as a junior.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><i class="fa-brands fa-python text-[#3776AB]"></i>Python</span>
-                            <span class="chip"><i class="fa-solid fa-leaf text-[#43B02A]"></i>Django</span>
-                            <span class="chip"><i class="fa-brands fa-golang text-[#00ADD8]"></i>Go</span>
-                            <span class="chip"><i class="fa-solid fa-database text-[#336791]"></i>PostgreSQL</span>
-                            <span class="chip"><i class="fa-solid fa-cubes text-[#DC382D]"></i>Redis</span>
-                            <span class="chip"><i class="fa-solid fa-clock text-[#37814A]"></i>Celery</span>
-                            <span class="chip"><i class="fa-brands fa-docker text-[#2496ED]"></i>Docker</span>
-                            <span class="chip"><i class="fa-brands fa-git-alt text-[#F05032]"></i>Git</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/django.svg" alt="Django"></span>Django</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/go.svg" alt="Go"></span>Go</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/postgresql.svg" alt="PostgreSQL"></span>PostgreSQL</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/redis.svg" alt="Redis"></span>Redis</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/celery.svg" alt="Celery"></span>Celery</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
+                            <span class="chip"><span class="skill-icon"><i class="fa-brands fa-git-alt text-[#F05032]"></i></span>Git</span>
                         </div>
                     </article>
                 </div>
@@ -890,12 +895,12 @@
                             internal knowledge base documents.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="chip"><i class="fa-brands fa-python text-[#3776AB]"></i>Python</span>
-                            <span class="chip"><i class="fa-solid fa-bolt text-[#009688]"></i>FastAPI</span>
-                            <span class="chip">LangChain</span>
-                            <span class="chip">OpenAI / Gemini</span>
-                            <span class="chip">ChromaDB</span>
-                            <span class="chip"><i class="fa-brands fa-docker text-[#2496ED]"></i>Docker</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/python.svg" alt="Python"></span>Python</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/fastapi.svg" alt="FastAPI"></span>FastAPI</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/langchain.svg" alt="LangChain"></span>LangChain</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/openai.svg" alt="OpenAI"></span>OpenAI / Gemini</span>
+                            <span class="chip"><span class="skill-icon"><i class="fa-solid fa-database"></i></span>ChromaDB</span>
+                            <span class="chip"><span class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/docker.svg" alt="Docker"></span>Docker</span>
                         </div>
                     </div>
 
